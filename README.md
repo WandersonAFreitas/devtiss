@@ -11,7 +11,7 @@
 
 <h4>Estapas do Projeto</h4>
 <ul>
-    <li><input type="checkbox" checked> Configuração da estrutura do Projeto</li>
+    <li>Configuração da estrutura do Projeto</li>
     <li>Desenvolvimento do FrontEnd</li>
     <li>Desenvolvimento do BackEnd</li>
 </ul>
