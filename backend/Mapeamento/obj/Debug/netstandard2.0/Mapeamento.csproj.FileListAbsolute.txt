@@ -1,0 +1,9 @@
+C:\Git\devtiss\backend\Mapeamento\bin\Debug\netstandard2.0\Mapeamento.deps.json
+C:\Git\devtiss\backend\Mapeamento\bin\Debug\netstandard2.0\Mapeamento.dll
+C:\Git\devtiss\backend\Mapeamento\bin\Debug\netstandard2.0\Mapeamento.pdb
+C:\Git\devtiss\backend\Mapeamento\obj\Debug\netstandard2.0\Mapeamento.csprojAssemblyReference.cache
+C:\Git\devtiss\backend\Mapeamento\obj\Debug\netstandard2.0\Mapeamento.AssemblyInfoInputs.cache
+C:\Git\devtiss\backend\Mapeamento\obj\Debug\netstandard2.0\Mapeamento.AssemblyInfo.cs
+C:\Git\devtiss\backend\Mapeamento\obj\Debug\netstandard2.0\Mapeamento.csproj.CoreCompileInputs.cache
+C:\Git\devtiss\backend\Mapeamento\obj\Debug\netstandard2.0\Mapeamento.dll
+C:\Git\devtiss\backend\Mapeamento\obj\Debug\netstandard2.0\Mapeamento.pdb

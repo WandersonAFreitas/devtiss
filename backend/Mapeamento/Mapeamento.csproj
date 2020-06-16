@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Tiss\V3_04_00\ArquivosAns\xsd\tissV3_04_00.xsd" LogicalName="Tiss.V3_04_00.ArquivosAns.xsd.tissV3_04_00.xsd" />
+		<EmbeddedResource Include="Tiss\V3_04_00\ArquivosAns\xsd\tissAssinaturaDigital_v1.01.xsd" LogicalName="Tiss.V3_04_00.ArquivosAns.xsd.tissAssinaturaDigital_v1.01.xsd" />
+		<EmbeddedResource Include="Tiss\V3_04_00\ArquivosAns\xsd\tissSimpleTypesV3_04_00.xsd" LogicalName="Tiss.V3_04_00.ArquivosAns.xsd.tissSimpleTypesV3_04_00.xsd" />
+		<EmbeddedResource Include="Tiss\V3_04_00\ArquivosAns\xsd\tissComplexTypesV3_04_00.xsd" LogicalName="Tiss.V3_04_00.ArquivosAns.xsd.tissComplexTypesV3_04_00.xsd" />
+		<EmbeddedResource Include="Tiss\V3_04_00\ArquivosAns\xsd\tissGuiasV3_04_00.xsd" LogicalName="Tiss.V3_04_00.ArquivosAns.xsd.tissGuiasV3_04_00.xsd" />
+		<EmbeddedResource Include="Tiss\V3_04_00\ArquivosAns\xsd\xmldsig-core-schema.xsd" LogicalName="Tiss.V3_04_00.ArquivosAns.xsd.xmldsig-core-schema.xsd" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+	</ItemGroup>
+</Project>
