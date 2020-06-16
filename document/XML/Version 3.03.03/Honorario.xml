@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ans:mensagemTISS xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ans.gov.br/padroes/tiss/schemas http://www.ans.gov.br/padroes/tiss/schemas/tissV3_03_03.xsd">
+	<!--Arquivo gerado pelo módulo Exportacao de Fatura (2.3.155.115) do sistema Smart http://www.pixeon.com.br/
+Lote de guias de Honorário Individual da fatura NS.U.707-->
+	<ans:cabecalho>
+		<ans:identificacaoTransacao>
+			<ans:tipoTransacao>ENVIO_LOTE_GUIAS</ans:tipoTransacao>
+			<ans:sequencialTransacao>4372</ans:sequencialTransacao>
+			<ans:dataRegistroTransacao>2018-04-04</ans:dataRegistroTransacao>
+			<ans:horaRegistroTransacao>15:51:10</ans:horaRegistroTransacao>
+		</ans:identificacaoTransacao>
+		<ans:origem>
+			<ans:identificacaoPrestador>
+				<ans:codigoPrestadorNaOperadora>12646171000171</ans:codigoPrestadorNaOperadora>
+			</ans:identificacaoPrestador>
+		</ans:origem>
+		<ans:destino>
+			<ans:registroANS>385697</ans:registroANS>
+		</ans:destino>
+		<ans:Padrao>3.03.03</ans:Padrao>
+	</ans:cabecalho>
+	<ans:prestadorParaOperadora>
+		<ans:loteGuias>
+			<ans:numeroLote>707851201</ans:numeroLote>
+			<ans:guiasTISS>
+				<ans:guiaHonorarios>
+					<!--TAM 101111.2-->
+					<ans:cabecalhoGuia>
+						<ans:registroANS>385697</ans:registroANS>
+						<ans:numeroGuiaPrestador>89</ans:numeroGuiaPrestador>
+					</ans:cabecalhoGuia>
+					<ans:guiaSolicInternacao>53434781</ans:guiaSolicInternacao>
+					<!--senha-->
+					<ans:senha>534347819</ans:senha>
+					<ans:numeroGuiaOperadora>53434781</ans:numeroGuiaOperadora>
+					<ans:beneficiario>
+						<ans:numeroCarteira>1000010305890106</ans:numeroCarteira>
+						<ans:nomeBeneficiario>WILSON DE OLIVERA</ans:nomeBeneficiario>
+						<ans:atendimentoRN>N</ans:atendimentoRN>
+					</ans:beneficiario>
+					<ans:localContratado>
+						<!--E4-->
+						<ans:codigoContratado>
+							<ans:cnpjLocalExecutante>12646171000171</ans:cnpjLocalExecutante>
+						</ans:codigoContratado>
+						<ans:nomeContratado>HOSPITAL VISAO</ans:nomeContratado>
+						<ans:cnes>6919669</ans:cnes>
+					</ans:localContratado>
+					<ans:dadosContratadoExecutante>
+						<!--E4-->
+						<ans:codigonaOperadora>12646171000171</ans:codigonaOperadora>
+						<ans:nomeContratadoExecutante>HOSPITAL VISAO</ans:nomeContratadoExecutante>
+						<ans:cnesContratadoExecutante>6919669</ans:cnesContratadoExecutante>
+					</ans:dadosContratadoExecutante>
+					<ans:dadosInternacao>
+						<ans:dataInicioFaturamento>2018-03-20</ans:dataInicioFaturamento>
+						<ans:dataFimFaturamento>2018-03-20</ans:dataFimFaturamento>
+					</ans:dadosInternacao>
+					<ans:procedimentosRealizados>
+						<ans:procedimentoRealizado>
+							<ans:dataExecucao>2018-03-20</ans:dataExecucao>
+							<ans:horaInicial>09:00:00</ans:horaInicial>
+							<ans:horaFinal>10:00:00</ans:horaFinal>
+							<ans:procedimento>
+								<!--1AUX-->
+								<ans:codigoTabela>22</ans:codigoTabela>
+								<ans:codigoProcedimento>30306027</ans:codigoProcedimento>
+								<ans:descricaoProcedimento>1 AUXILIAR</ans:descricaoProcedimento>
+							</ans:procedimento>
+							<ans:quantidadeExecutada>1</ans:quantidadeExecutada>
+							<ans:viaAcesso>1</ans:viaAcesso>
+							<ans:tecnicaUtilizada>1</ans:tecnicaUtilizada>
+							<ans:reducaoAcrescimo>1.00</ans:reducaoAcrescimo>
+							<ans:valorUnitario>308.66</ans:valorUnitario>
+							<ans:valorTotal>308.66</ans:valorTotal>
+							<ans:profissionais>
+								<ans:grauParticipacao>01</ans:grauParticipacao>
+								<ans:codProfissional>
+									<ans:codigoPrestadorNaOperadora>12646171000171</ans:codigoPrestadorNaOperadora>
+								</ans:codProfissional>
+								<ans:nomeProfissional>RAIMUNDO DE OLIVEIRA JUNIOR</ans:nomeProfissional>
+								<ans:conselhoProfissional>06</ans:conselhoProfissional>
+								<ans:numeroConselhoProfissional>4622</ans:numeroConselhoProfissional>
+								<ans:UF>25</ans:UF>
+								<ans:CBO>225265</ans:CBO>
+							</ans:profissionais>
+						</ans:procedimentoRealizado>
+					</ans:procedimentosRealizados>
+					<ans:valorTotalHonorarios>308.66</ans:valorTotalHonorarios>
+					<ans:dataEmissaoGuia>2018-03-20</ans:dataEmissaoGuia>
+				</ans:guiaHonorarios>
+				<ans:guiaHonorarios>
+					<!--TAM 101111.2-->
+					<ans:cabecalhoGuia>
+						<ans:registroANS>385697</ans:registroANS>
+						<ans:numeroGuiaPrestador>90</ans:numeroGuiaPrestador>
+					</ans:cabecalhoGuia>
+					<ans:guiaSolicInternacao>53434781</ans:guiaSolicInternacao>
+					<!--senha-->
+					<ans:senha>534347819</ans:senha>
+					<ans:numeroGuiaOperadora>53434781</ans:numeroGuiaOperadora>
+					<ans:beneficiario>
+						<ans:numeroCarteira>1000010305890106</ans:numeroCarteira>
+						<ans:nomeBeneficiario>WILSON DE OLIVERA</ans:nomeBeneficiario>
+						<ans:atendimentoRN>N</ans:atendimentoRN>
+					</ans:beneficiario>
+					<ans:localContratado>
+						<!--E4-->
+						<ans:codigoContratado>
+							<ans:cnpjLocalExecutante>12646171000171</ans:cnpjLocalExecutante>
+						</ans:codigoContratado>
+						<ans:nomeContratado>HOSPITAL VISAO</ans:nomeContratado>
+						<ans:cnes>6919669</ans:cnes>
+					</ans:localContratado>
+					<ans:dadosContratadoExecutante>
+						<!--E4-->
+						<ans:codigonaOperadora>12646171000171</ans:codigonaOperadora>
+						<ans:nomeContratadoExecutante>HOSPITAL VISAO</ans:nomeContratadoExecutante>
+						<ans:cnesContratadoExecutante>6919669</ans:cnesContratadoExecutante>
+					</ans:dadosContratadoExecutante>
+					<ans:dadosInternacao>
+						<ans:dataInicioFaturamento>2018-03-20</ans:dataInicioFaturamento>
+						<ans:dataFimFaturamento>2018-03-20</ans:dataFimFaturamento>
+					</ans:dadosInternacao>
+					<ans:procedimentosRealizados>
+						<ans:procedimentoRealizado>
+							<ans:dataExecucao>2018-03-20</ans:dataExecucao>
+							<ans:horaInicial>09:00:00</ans:horaInicial>
+							<ans:horaFinal>10:00:00</ans:horaFinal>
+							<ans:procedimento>
+								<!--25-->
+								<ans:codigoTabela>22</ans:codigoTabela>
+								<ans:codigoProcedimento>30306027</ans:codigoProcedimento>
+								<ans:descricaoProcedimento>FACECTOMIA COM LENTE INTRAOCULAR COM FACOEMULSIFICACAO</ans:descricaoProcedimento>
+							</ans:procedimento>
+							<ans:quantidadeExecutada>1</ans:quantidadeExecutada>
+							<ans:viaAcesso>1</ans:viaAcesso>
+							<ans:tecnicaUtilizada>1</ans:tecnicaUtilizada>
+							<ans:reducaoAcrescimo>1.00</ans:reducaoAcrescimo>
+							<ans:valorUnitario>1028.87</ans:valorUnitario>
+							<ans:valorTotal>1028.87</ans:valorTotal>
+							<ans:profissionais>
+								<ans:grauParticipacao>00</ans:grauParticipacao>
+								<ans:codProfissional>
+									<ans:codigoPrestadorNaOperadora>12646171000171</ans:codigoPrestadorNaOperadora>
+								</ans:codProfissional>
+								<ans:nomeProfissional>FERNANDO MELO GADELHA</ans:nomeProfissional>
+								<ans:conselhoProfissional>06</ans:conselhoProfissional>
+								<ans:numeroConselhoProfissional>5494</ans:numeroConselhoProfissional>
+								<ans:UF>25</ans:UF>
+								<ans:CBO>225265</ans:CBO>
+							</ans:profissionais>
+						</ans:procedimentoRealizado>
+					</ans:procedimentosRealizados>
+					<ans:valorTotalHonorarios>1028.87</ans:valorTotalHonorarios>
+					<ans:dataEmissaoGuia>2018-03-20</ans:dataEmissaoGuia>
+				</ans:guiaHonorarios>
+			</ans:guiasTISS>
+		</ans:loteGuias>
+	</ans:prestadorParaOperadora>
+	<ans:epilogo>
+		<ans:hash>c163bb6c8c5c84963ffac2a08c9ce9a3</ans:hash>
+	</ans:epilogo>
+</ans:mensagemTISS>
