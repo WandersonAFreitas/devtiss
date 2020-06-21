@@ -9,7 +9,6 @@ import { ReactComponent as Logo } from '../assets/logo.svg';
 
 function App() {
   const [itemFiles, setItemFiles] = useState<Array<any>>([]);
-  const [download, setDownload] = useState("");
 
   const handleUpload = (files: any[]) => {
 
@@ -18,11 +17,41 @@ function App() {
       data.append('XML', file);
 
       const response = await api.post('/ValidarXML', data);
+
+      // 2. Crie um link de blob para baixar 
+      const url = window.URL.createObjectURL(new Blob([response.data.xml]));
+      // const link = document.createElement ('a'); 
+      // link.href = url; 
+      // link.setAttribute('download', response.data.nome);
+      // 3. Anexe à página html 
+      // document.body.appendChild (link);
+      // 4. Force o download do 
+      // link.click ();
+      // 5. Limpe e remova o link 
+      //link.parentNode.removeChild (link);
+      if (response.data.xml)
+        response.data['url'] = url;
+
       setItemFiles(itemFiles => ([response.data, ...itemFiles]));
     }
 
     files.forEach(async file => {
       await fetchFiles(file);
+    });
+  }
+
+  const handleDownloads = (itemFiles: any[]) => {
+    const files = itemFiles.filter(item => {
+      return item.xml;
+    });
+    
+    files.forEach(file => {
+      const link = document.createElement ('a'); 
+      link.href = file.url; 
+      link.setAttribute('download', file.nome);
+      document.body.appendChild (link);
+      link.click ();
+      link.parentNode?.removeChild(link);
     });
   }
 
@@ -67,9 +96,9 @@ function App() {
                 <span>Data/Hora</span>
               </li>
               {
-                itemFiles && itemFiles.map((file) => (
-                  <li key={file.data}>
-                    <a className="fileInfo" download={file.nome} href={file.url} target="_blank">
+                itemFiles && itemFiles.map((file, i) => (
+                  <li key={i}>
+                    <a className="fileInfo" href={file.url} download={file.nome} target="_blank" rel="noopener noreferrer">
                       <span>{file.nome}</span>
                     </a>
                     <span>{file.transacao}</span>
@@ -81,7 +110,7 @@ function App() {
               }
             </ul>
 
-            <button type="button">Downloads dos arquivo modificados</button>
+            <button type="button" onClick={() => handleDownloads(itemFiles)}>Downloads dos arquivo modificados</button>
           </div>
         </main>
 

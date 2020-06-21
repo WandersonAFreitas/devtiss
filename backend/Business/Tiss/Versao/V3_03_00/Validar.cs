@@ -5,9 +5,9 @@ using System.Reflection;
 using Business.Tiss.Base;
 using Business.Utils;
 
-using Mapeamento.Tiss.V3_04_00;
+using Mapeamento.Tiss.V3_03_00;
 
-namespace Business.Tiss.Versao.V3_04_00
+namespace Business.Tiss.Versao.V3_03_00
 {
     public class Validar : ValidarBase
     {
@@ -49,12 +49,12 @@ namespace Business.Tiss.Versao.V3_04_00
 
             var arquivosXsd = new List<Stream>();
 
-            arquivosXsd.Add(assembly.GetManifestResourceStream("Tiss.V3_04_00.ArquivosAns.xsd.tissV3_04_00.xsd"));
-            arquivosXsd.Add(assembly.GetManifestResourceStream("Tiss.V3_04_00.ArquivosAns.xsd.tissAssinaturaDigital_v1.01.xsd"));
-            arquivosXsd.Add(assembly.GetManifestResourceStream("Tiss.V3_04_00.ArquivosAns.xsd.tissSimpleTypesV3_04_00.xsd"));
-            arquivosXsd.Add(assembly.GetManifestResourceStream("Tiss.V3_04_00.ArquivosAns.xsd.tissComplexTypesV3_04_00.xsd"));
-            arquivosXsd.Add(assembly.GetManifestResourceStream("Tiss.V3_04_00.ArquivosAns.xsd.tissGuiasV3_04_00.xsd"));
-            arquivosXsd.Add(assembly.GetManifestResourceStream("Tiss.V3_04_00.ArquivosAns.xsd.xmldsig-core-schema.xsd"));
+            arquivosXsd.Add(assembly.GetManifestResourceStream("Tiss.V3_03_00.ArquivosAns.xsd.tissV3_03_00.xsd"));
+            arquivosXsd.Add(assembly.GetManifestResourceStream("Tiss.V3_03_00.ArquivosAns.xsd.tissAssinaturaDigital_v1.01.xsd"));
+            arquivosXsd.Add(assembly.GetManifestResourceStream("Tiss.V3_03_00.ArquivosAns.xsd.tissSimpleTypesV3_03_00.xsd"));
+            arquivosXsd.Add(assembly.GetManifestResourceStream("Tiss.V3_03_00.ArquivosAns.xsd.tissComplexTypesV3_03_00.xsd"));
+            arquivosXsd.Add(assembly.GetManifestResourceStream("Tiss.V3_03_00.ArquivosAns.xsd.tissGuiasV3_03_00.xsd"));
+            arquivosXsd.Add(assembly.GetManifestResourceStream("Tiss.V3_03_00.ArquivosAns.xsd.xmldsig-core-schema.xsd"));
 
             var erros = XmlUtils.ValidarXml(stream, arquivosXsd.ToArray());
 

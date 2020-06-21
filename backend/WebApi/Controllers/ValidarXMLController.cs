@@ -42,25 +42,5 @@ namespace WebApi.Controllers
 
             return response;
         }
-
-        // public async Task<IActionResult> Download(string xmlString)
-        // {
-        //     if (String.IsNullOrEmpty(xmlString))
-        //         return Content("Arquivo inválido...");
-
-        //     byte[] data = Encoding.UTF8.GetBytes(xmlString);
-            
-        //     FileStream fileStream = new FileStream(@path, FileMode.Create, FileAccess.Write);
-        //     fileStream.Write(data, 0, data.Length);
-        //     fileStream.Close();
-
-        //     var memory = new MemoryStream();
-        //     using (var stream = new FileStream(path, FileMode.Open))
-        //     {
-        //         await stream.CopyToAsync(memory);
-        //     }
-        //     memory.Position = 0;
-        //     return File(memory, GetContentType(path), Path.GetFileName(path));
-        // }
     }
 }

@@ -12,7 +12,6 @@ namespace Business.Tiss
         public ValidarXMLResponse Validar(ValidarXMLRequest request, String url)
         {
             ValidarXMLResponse response = new ValidarXMLResponse();
-            response.key      = new Random(2020).Next().ToString();
             response.Situacao = SituacaoEnum.Validando.Descricao();
             response.Nome     = request.XML.FileName;
             response.Data     = DateTime.Now;
