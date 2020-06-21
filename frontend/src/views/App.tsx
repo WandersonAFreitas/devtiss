@@ -9,6 +9,7 @@ import { ReactComponent as Logo } from '../assets/logo.svg';
 
 function App() {
   const [itemFiles, setItemFiles] = useState<Array<any>>([]);
+  const [versao, setVersao] = useState('3.04.00');
 
   const handleUpload = (files: any[]) => {
 
@@ -17,18 +18,8 @@ function App() {
       data.append('XML', file);
 
       const response = await api.post('/ValidarXML', data);
-
-      // 2. Crie um link de blob para baixar 
       const url = window.URL.createObjectURL(new Blob([response.data.xml]));
-      // const link = document.createElement ('a'); 
-      // link.href = url; 
-      // link.setAttribute('download', response.data.nome);
-      // 3. Anexe à página html 
-      // document.body.appendChild (link);
-      // 4. Force o download do 
-      // link.click ();
-      // 5. Limpe e remova o link 
-      //link.parentNode.removeChild (link);
+      
       if (response.data.xml)
         response.data['url'] = url;
 
@@ -73,8 +64,8 @@ function App() {
           <div id="form">
             <legend>
               <h2>Validar XML</h2>
+              <span>Ultima versão suportada {versao}</span>
             </legend>
-
 
             <Dropzone onDropAccepted={handleUpload}>
               {
