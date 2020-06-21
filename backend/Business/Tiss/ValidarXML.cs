@@ -1,24 +1,24 @@
 using System;
 using System.IO;
 using Business.Utils;
+using Mapeamento.Dto.Enum;
 using Mapeamento.Dto.ValidarXML;
 using Mapeamento.Extensions;
-using TissXsd30400 = Mapeamento.Tiss.V3_04_00;
-using TissBusiness30400 = Business.Tiss.V3_04_00;
-using System.Collections.Generic;
 
 namespace Business.Tiss
 {
     public class ValidarXML
     {
-        public ValidarXMLResponse Validar(ValidarXMLRequest request)
+        public ValidarXMLResponse Validar(ValidarXMLRequest request, String url)
         {
             ValidarXMLResponse response = new ValidarXMLResponse();
+            response.key      = new Random(2020).Next().ToString();
             response.Situacao = SituacaoEnum.Validando.Descricao();
+            response.Nome     = request.XML.FileName;
+            response.Data     = DateTime.Now;
 
             try
             {
-
                 if (!Path.GetExtension(request.XML.FileName).Equals(".XML", StringComparison.CurrentCultureIgnoreCase))
                     throw new Exception("O arquivo compactado não é de extensão XML.");
             
@@ -27,28 +27,31 @@ namespace Business.Tiss
                 if (String.IsNullOrEmpty(versao))
                     throw new Exception("Não foi possível identificar a versão TISS do arquivo ou o mesmo não está nas versões aceitas pela operadora.");
 
-                if (TissXsd30400.dm_versao.Item30400.Descricao().Equals(versao))
+                var validar = Tiss.Versao.ValidarFactory.Validar(versao);
+                
+                validar.ValidarXML(request.XML.OpenReadStream(), versao, request.XML.FileName);
+
+                response.Transacao  = validar.Transacao;
+                response.Versao     = validar.Versao;
+                response.Xml        = validar.Xml;
+
+                if (!String.IsNullOrEmpty(validar.Ocorrencia))
                 {
-                    new TissBusiness30400.Schema().Validar(request.XML.OpenReadStream());
-                 
-                    TissXsd30400.mensagemTISS mensagemTISS = (TissXsd30400.mensagemTISS)XmlUtils.ConverterXmlParaClasse(request.XML.OpenReadStream(), typeof(TissXsd30400.mensagemTISS));
-                    response.Transacao = mensagemTISS.cabecalho.identificacaoTransacao.tipoTransacao.ToString();
+                    response.Situacao   = SituacaoEnum.ConcluidoComAlerta.Descricao(); 
+                    response.Ocorrencia = validar.Ocorrencia;
                 }
                 else
-                    throw new Exception("Versão invalida.");
-
-                response.Versao = versao;
-                response.Situacao = SituacaoEnum.Concluido.Descricao();
+                {
+                    response.Situacao   = SituacaoEnum.Concluido.Descricao();
+                }
             }
             catch (System.Exception e)
             {
-                response.Situacao = SituacaoEnum.Erro.Descricao();
+                response.Situacao   = SituacaoEnum.Erro.Descricao();
                 response.Ocorrencia = e.Message;
             }
 
             return response;
-
-            // throw new NotImplementedException();
         }
 
         

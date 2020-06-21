@@ -1,9 +1,12 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Benner.Saude.Comuns;
+using Mapeamento.Extensions;
 
 namespace Business.Utils
 {
@@ -123,6 +126,55 @@ namespace Business.Utils
             {
                 throw e;
             }
+        }
+
+        public static string SerializarClasseParaXmlUtf8<T>(T obj) where T : class
+        {
+            try
+            {
+                return SerializarClasseParaXmlComCodificaoUtf8(obj);
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
+        public static string SerializarClasseParaXmlComCodificaoUtf8<T>(T obj) where T : class
+        {
+            using (var stream = new MemoryStream())
+            {
+                var xmlSerializer = new XmlSerializer(typeof (T));
+                xmlSerializer.Serialize(stream, obj);
+                return Encoding.UTF8.GetString(stream.ToArray());
+            }
+        }
+
+        public static bool ValidarHash(Stream stream)
+        {
+            string hash = RecuperarValorXmlNo(stream, "hash");
+
+            bool validar = false;
+            string hashCalculado = string.Empty;
+
+            XmlDocument doc = new XmlDocument();
+            stream.Position = 0;
+            doc.Load(stream);
+
+            hashCalculado = Hash.Gerar(doc.DocumentElement.OwnerDocument.InnerXml);
+            validar = hash.Equals(hashCalculado, StringComparison.CurrentCultureIgnoreCase);
+            
+            return validar;
+        }
+
+        public static string CalcularHash(string input)
+        {
+            XmlDocument doc = new XmlDocument();
+            Stream stream = new MemoryStream(Encoding.UTF8.GetBytes(input));
+            doc.Load(stream);
+            stream.Close();
+            
+            return Hash.GerarMd5(doc.DocumentElement.OwnerDocument.InnerXml);            
         }
     }
 }

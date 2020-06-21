@@ -98,7 +98,7 @@
 
 #form ul li {
   display: grid;
-  grid-template-columns: 300px 150px 60px 100px auto
+  grid-template-columns: 300px 150px 60px 150px auto
 }
 
 #form ul li + li {
