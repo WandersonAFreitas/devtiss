@@ -9,7 +9,7 @@ import { ReactComponent as Logo } from '../assets/logo.svg';
 
 function App() {
   const [itemFiles, setItemFiles] = useState<Array<any>>([]);
-  const [versao, setVersao] = useState('3.04.00');
+  const [versao] = useState('3.04.00');
 
   const handleUpload = (files: any[]) => {
 

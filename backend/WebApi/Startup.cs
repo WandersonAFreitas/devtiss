@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace WebApi
 {
@@ -31,42 +32,44 @@ namespace WebApi
             services.AddControllers();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerGeneratorOptions.IgnoreObsoleteActions = true;
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseHttpsRedirection();
+            
+            app.UseCors(option => option.AllowAnyOrigin());
 
             app.UseRouting();
 
-            app.UseCors(option => option.AllowAnyOrigin());
-
             app.UseAuthorization();
+            
+            app.UseSwagger();
 
-            app.UseStaticFiles(new StaticFileOptions()
+            app.UseSwaggerUI(c =>
             {
-                FileProvider = new PhysicalFileProvider(
-                        Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\Xml")),
-                RequestPath = new PathString("/Xml")
-            });
-
-            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
-            {
-                FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\Xml")),
-                RequestPath = new PathString("/Xml")
+                c.SwaggerEndpoint("swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
             });
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

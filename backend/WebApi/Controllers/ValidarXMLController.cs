@@ -1,6 +1,4 @@
 using System;
-using System.Text;
-using System.Threading.Tasks;
 using Mapeamento.Dto.ValidarXML;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +8,7 @@ namespace WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ValidarXMLController : Base.ControllerBase
+    public class ValidarXMLController : ControllerBase
     {
         private readonly ILogger<ValidarXMLController> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -20,7 +18,8 @@ namespace WebApi.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
-        [HttpPost]
+        [Route("Validar")]
+        [HttpPost] 
         public ValidarXMLResponse Post([FromForm] ValidarXMLRequest request)
         {
             ValidarXMLResponse response;
@@ -29,7 +28,7 @@ namespace WebApi.Controllers
             {
                 _logger.LogInformation("Iniciando o processo de validação...");
 
-                response = new Business.Tiss.ValidarXML().Validar(request, getCurrentUrl(_httpContextAccessor));
+                response = new Business.Tiss.ValidarXML().Validar(request);
 
                 _logger.LogInformation("Concluíndo o processo de validação...");
 

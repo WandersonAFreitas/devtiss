@@ -9,7 +9,7 @@ namespace Business.Tiss
 {
     public class ValidarXML
     {
-        public ValidarXMLResponse Validar(ValidarXMLRequest request, String url)
+        public ValidarXMLResponse Validar(ValidarXMLRequest request)
         {
             ValidarXMLResponse response = new ValidarXMLResponse();
             response.Situacao = SituacaoEnum.Validando.Descricao();
