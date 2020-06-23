@@ -53,6 +53,11 @@ namespace Business.Tiss
             return response;
         }
 
-        
+        public String VersaoSuportada()
+        {
+            var versaoSuportada = Tiss.Versao.ValidarFactory.VersaoSuportada();
+
+            return versaoSuportada;
+        }
     }
 }

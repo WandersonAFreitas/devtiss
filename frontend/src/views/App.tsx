@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Dropzone from 'react-dropzone';
 import { formatDistance } from "date-fns";
@@ -9,7 +9,7 @@ import { ReactComponent as Logo } from '../assets/logo.svg';
 
 function App() {
   const [itemFiles, setItemFiles] = useState<Array<any>>([]);
-  const [versao] = useState('3.04.00');
+  const [versao, setVersao] = useState('Não identificada');
 
   const handleUpload = (files: any[]) => {
 
@@ -17,9 +17,9 @@ function App() {
       const data = new FormData();
       data.append('XML', file);
 
-      const response = await api.post('/ValidarXML', data);
+      const response = await api.post('/ValidarXML/Validar', data);
       const url = window.URL.createObjectURL(new Blob([response.data.xml]));
-      
+
       if (response.data.xml)
         response.data['url'] = url;
 
@@ -35,16 +35,22 @@ function App() {
     const files = itemFiles.filter(item => {
       return item.xml;
     });
-    
+
     files.forEach(file => {
-      const link = document.createElement ('a'); 
-      link.href = file.url; 
+      const link = document.createElement('a');
+      link.href = file.url;
       link.setAttribute('download', file.nome);
-      document.body.appendChild (link);
-      link.click ();
+      document.body.appendChild(link);
+      link.click();
       link.parentNode?.removeChild(link);
     });
   }
+
+  useEffect(() => {
+    api.get('/ValidarXML/VersaoSuportada').then(resp => {
+      setVersao(resp.data)
+    })
+  })
 
   return (
     <>
@@ -94,14 +100,16 @@ function App() {
                     </a>
                     <span>{file.transacao}</span>
                     <span>{file.versao}</span>
-                    <span>{file.situacao}</span>
+                    <div className="tooltip">{file.situacao}
+                      <span className="tooltiptext">{file.ocorrencia}</span>
+                    </div>
                     <span>há{" "}{formatDistance(Date.parse(file.data), new Date(), { locale: pt })}</span>
                   </li>
                 ))
               }
             </ul>
 
-            <button type="button" onClick={() => handleDownloads(itemFiles)}>Downloads dos arquivo modificados</button>
+            <button type="button" onClick={() => handleDownloads(itemFiles)}>Downloads todos</button>
           </div>
         </main>
 

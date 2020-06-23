@@ -3,6 +3,20 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 	</PropertyGroup>
 	<ItemGroup>
+		<EmbeddedResource Include="Tiss\V3_05_00\ArquivosAns\xsd\tissV3_05_00.xsd" LogicalName="Tiss.V3_05_00.ArquivosAns.xsd.tissV3_05_00.xsd" />
+		<EmbeddedResource Include="Tiss\V3_05_00\ArquivosAns\xsd\tissAssinaturaDigital_v1.01.xsd" LogicalName="Tiss.V3_05_00.ArquivosAns.xsd.tissAssinaturaDigital_v1.01.xsd" />
+		<EmbeddedResource Include="Tiss\V3_05_00\ArquivosAns\xsd\tissSimpleTypesV3_05_00.xsd" LogicalName="Tiss.V3_05_00.ArquivosAns.xsd.tissSimpleTypesV3_05_00.xsd" />
+		<EmbeddedResource Include="Tiss\V3_05_00\ArquivosAns\xsd\tissComplexTypesV3_05_00.xsd" LogicalName="Tiss.V3_05_00.ArquivosAns.xsd.tissComplexTypesV3_05_00.xsd" />
+		<EmbeddedResource Include="Tiss\V3_05_00\ArquivosAns\xsd\tissGuiasV3_05_00.xsd" LogicalName="Tiss.V3_05_00.ArquivosAns.xsd.tissGuiasV3_05_00.xsd" />
+		<EmbeddedResource Include="Tiss\V3_05_00\ArquivosAns\xsd\xmldsig-core-schema.xsd" LogicalName="Tiss.V3_05_00.ArquivosAns.xsd.xmldsig-core-schema.xsd" />
+
+		<EmbeddedResource Include="Tiss\V3_04_01\ArquivosAns\xsd\tissV3_04_01.xsd" LogicalName="Tiss.V3_04_01.ArquivosAns.xsd.tissV3_04_01.xsd" />
+		<EmbeddedResource Include="Tiss\V3_04_01\ArquivosAns\xsd\tissAssinaturaDigital_v1.01.xsd" LogicalName="Tiss.V3_04_01.ArquivosAns.xsd.tissAssinaturaDigital_v1.01.xsd" />
+		<EmbeddedResource Include="Tiss\V3_04_01\ArquivosAns\xsd\tissSimpleTypesV3_04_01.xsd" LogicalName="Tiss.V3_04_01.ArquivosAns.xsd.tissSimpleTypesV3_04_01.xsd" />
+		<EmbeddedResource Include="Tiss\V3_04_01\ArquivosAns\xsd\tissComplexTypesV3_04_01.xsd" LogicalName="Tiss.V3_04_01.ArquivosAns.xsd.tissComplexTypesV3_04_01.xsd" />
+		<EmbeddedResource Include="Tiss\V3_04_01\ArquivosAns\xsd\tissGuiasV3_04_01.xsd" LogicalName="Tiss.V3_04_01.ArquivosAns.xsd.tissGuiasV3_04_01.xsd" />
+		<EmbeddedResource Include="Tiss\V3_04_01\ArquivosAns\xsd\xmldsig-core-schema.xsd" LogicalName="Tiss.V3_04_01.ArquivosAns.xsd.xmldsig-core-schema.xsd" />
+
 		<EmbeddedResource Include="Tiss\V3_04_00\ArquivosAns\xsd\tissV3_04_00.xsd" LogicalName="Tiss.V3_04_00.ArquivosAns.xsd.tissV3_04_00.xsd" />
 		<EmbeddedResource Include="Tiss\V3_04_00\ArquivosAns\xsd\tissAssinaturaDigital_v1.01.xsd" LogicalName="Tiss.V3_04_00.ArquivosAns.xsd.tissAssinaturaDigital_v1.01.xsd" />
 		<EmbeddedResource Include="Tiss\V3_04_00\ArquivosAns\xsd\tissSimpleTypesV3_04_00.xsd" LogicalName="Tiss.V3_04_00.ArquivosAns.xsd.tissSimpleTypesV3_04_00.xsd" />

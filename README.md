@@ -15,3 +15,27 @@
     <li>Desenvolvimento do FrontEnd</li>
     <li>Desenvolvimento do BackEnd</li>
 </ul>
+
+
+heroku 
+    frontned
+$ heroku login
+
+$ cd frontend/
+$ git init
+$ heroku git:remote -a devtiss-backend
+
+$ git add .
+$ git commit -am "make it better"
+$ git push heroku master
+
+    backend
+$ heroku login
+
+$ docker ps
+
+$ heroku container:login
+
+$ heroku container:push web -a devtiss-backend
+
+$ heroku container:release web -a devtiss-backend

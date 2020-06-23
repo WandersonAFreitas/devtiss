@@ -41,5 +41,12 @@ namespace WebApi.Controllers
 
             return response;
         }
+
+        [Route("VersaoSuportada")]
+        [HttpGet] 
+        public String VersaoSuportada()
+        {
+            return new Business.Tiss.ValidarXML().VersaoSuportada();
+        }
     }
 }
