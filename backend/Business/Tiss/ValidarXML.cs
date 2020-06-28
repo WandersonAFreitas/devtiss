@@ -27,11 +27,10 @@ namespace Business.Tiss
                     throw new Exception("Não foi possível identificar a versão TISS do arquivo ou o mesmo não está nas versões aceitas pela operadora.");
 
                 var validar = Tiss.Versao.ValidarFactory.Validar(versao);
-                
-                validar.ValidarXML(request.XML.OpenReadStream(), versao, request.XML.FileName);
+                validar.ValidarXML(request.XML.OpenReadStream(), versao);
 
                 response.Transacao  = validar.Transacao;
-                response.Versao     = validar.Versao;
+                response.Versao     = validar.versao;
                 response.Xml        = validar.Xml;
 
                 if (!String.IsNullOrEmpty(validar.Ocorrencia))

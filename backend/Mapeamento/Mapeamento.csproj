@@ -4,6 +4,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<EmbeddedResource Include="Tiss\V3_05_00\ArquivosAns\xsd\tissV3_05_00.xsd" LogicalName="Tiss.V3_05_00.ArquivosAns.xsd.tissV3_05_00.xsd" />
+		<EmbeddedResource Include="Tiss\V3_05_00\ArquivosAns\xsd\tissWebServicesV3_05_00.xsd" LogicalName="Tiss.V3_05_00.ArquivosAns.xsd.tissWebServicesV3_05_00.xsd" />
 		<EmbeddedResource Include="Tiss\V3_05_00\ArquivosAns\xsd\tissAssinaturaDigital_v1.01.xsd" LogicalName="Tiss.V3_05_00.ArquivosAns.xsd.tissAssinaturaDigital_v1.01.xsd" />
 		<EmbeddedResource Include="Tiss\V3_05_00\ArquivosAns\xsd\tissSimpleTypesV3_05_00.xsd" LogicalName="Tiss.V3_05_00.ArquivosAns.xsd.tissSimpleTypesV3_05_00.xsd" />
 		<EmbeddedResource Include="Tiss\V3_05_00\ArquivosAns\xsd\tissComplexTypesV3_05_00.xsd" LogicalName="Tiss.V3_05_00.ArquivosAns.xsd.tissComplexTypesV3_05_00.xsd" />
