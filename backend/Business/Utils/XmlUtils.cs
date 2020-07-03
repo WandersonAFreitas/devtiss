@@ -5,8 +5,6 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using Benner.Saude.Comuns;
-using Mapeamento.Extensions;
 
 namespace Business.Utils
 {
@@ -14,7 +12,6 @@ namespace Business.Utils
     {
         private static String mensagensErros = String.Empty;
         private static String elementoErro = String.Empty;
-
         public static string ValidarXml(Stream xmlEntrada, Stream[] schemas)
         {
             try
@@ -53,7 +50,6 @@ namespace Business.Utils
             }
 
         }
-
         private static XmlReaderSettings CriarXmlReaderSettings(Stream[] schemas)
         {
             var settings = new XmlReaderSettings();
@@ -71,7 +67,6 @@ namespace Business.Utils
 
             return settings;
         }
-
         private static void ErrosValidacaoXml(object sender, ValidationEventArgs e)
         {
             mensagensErros += "Erro: " + e.Message;
@@ -83,27 +78,14 @@ namespace Business.Utils
                               "\nColuna: " + e.Exception.LinePosition + "\n\n";
 
         }
-    
-        public static string RecuperaVersao(Stream stream)
+        public static string RecuperarValorXmlNo(Stream stream, string nomeNo)
         {
-            var versao = String.Empty;
+            stream.Position = 0;
+            var reader = XmlReader.Create(stream, new XmlReaderSettings());
 
-            versao = XmlUtils.RecuperarValorXmlNo(stream, "Padrao");
-
-            if (versao == String.Empty)
-                versao = XmlUtils.RecuperarValorXmlNo(stream, "versaoPadrao");
-
-            return versao;
-        }
-
-        public static string RecuperarValorXmlNo(Stream xml, string nomeNo)
-        {
-            xml.Position = 0;
-            var reader = XmlReader.Create(xml, new XmlReaderSettings());
-            
             while (reader.Read())
             {
-                if (reader.NodeType == XmlNodeType.Element && 
+                if (reader.NodeType == XmlNodeType.Element &&
                    (reader.Name.Equals(nomeNo) || reader.Name.ToUpper().Contains(nomeNo.ToUpper())))
                 {
                     reader.Read();
@@ -114,67 +96,46 @@ namespace Business.Utils
             return String.Empty;
         }
 
-        public static object ConverterXmlParaClasse(Stream mensagem, Type type)
+        public static String SetValorXmlNo(Stream stream, String oldValue, String newValue)
         {
-            mensagem.Position = 0;
+            stream.Position = 0;
+            StreamReader reader = new StreamReader( stream );
+            string text = reader.ReadToEnd();
+
+            return text.Replace(oldValue, newValue);
+        }
+
+        public static string RecuperaTipoSolicitacao(Stream stream)
+        {
+            stream.Position = 0;
+            var resolver = new XmlUrlResolver { Credentials = CredentialCache.DefaultCredentials };
+            var xmlDoc = new XmlDocument { XmlResolver = resolver };
+
+            xmlDoc.Load(stream);
+
+            return xmlDoc.FirstChild.NextSibling.LocalName;
+        }
+        public static object ConverterXmlParaClasse(Stream stream, Type type)
+        {
+            stream.Position = 0;
             XmlSerializer serializer = new XmlSerializer(type);
             try
             {
-                return serializer.Deserialize(new XmlTextReader(mensagem));
+                return serializer.Deserialize(new XmlTextReader(stream));
             }
             catch (Exception e)
             {
                 throw e;
             }
         }
-
-        public static string SerializarClasseParaXmlUtf8<T>(T obj) where T : class
-        {
-            try
-            {
-                return SerializarClasseParaXmlComCodificaoUtf8(obj);
-            }
-            catch
-            {
-                return string.Empty;
-            }
-        }
-
-        public static string SerializarClasseParaXmlComCodificaoUtf8<T>(T obj) where T : class
+        public static string SerializarClasseParaXmlComCodificaoUtf8(Object obj, Type type) 
         {
             using (var stream = new MemoryStream())
             {
-                var xmlSerializer = new XmlSerializer(typeof (T));
+                var xmlSerializer = new XmlSerializer(type);
                 xmlSerializer.Serialize(stream, obj);
                 return Encoding.UTF8.GetString(stream.ToArray());
             }
-        }
-
-        public static bool ValidarHash(Stream stream)
-        {
-            string hash = RecuperarValorXmlNo(stream, "hash");
-
-            bool validar = false;
-            string hashCalculado = string.Empty;
-
-            XmlDocument doc = new XmlDocument();
-            stream.Position = 0;
-            doc.Load(stream);
-
-            hashCalculado = Hash.Gerar(doc.DocumentElement.OwnerDocument.InnerXml);
-            validar = hash.Equals(hashCalculado, StringComparison.CurrentCultureIgnoreCase);
-            
-            return validar;
-        }
-
-        public static string CalcularHash(string input)
-        {
-            XmlDocument doc = new XmlDocument();
-            Stream stream = new MemoryStream(Encoding.UTF8.GetBytes(input));
-            doc.Load(stream);
-            stream.Close();
-            
-            return Hash.GerarMd5(doc.DocumentElement.OwnerDocument.InnerXml);            
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Business.Tiss
                 if (!Path.GetExtension(request.XML.FileName).Equals(".XML", StringComparison.CurrentCultureIgnoreCase))
                     throw new Exception("O arquivo compactado não é de extensão XML.");
             
-                var versao = XmlUtils.RecuperaVersao(request.XML.OpenReadStream());
+                var versao = RecuperaVersao(request.XML.OpenReadStream());
 
                 if (String.IsNullOrEmpty(versao))
                     throw new Exception("Não foi possível identificar a versão TISS do arquivo ou o mesmo não está nas versões aceitas pela operadora.");
@@ -32,15 +32,12 @@ namespace Business.Tiss
                 response.Transacao  = validar.Transacao;
                 response.Versao     = validar.versao;
                 response.Xml        = validar.Xml;
+                response.Situacao   = SituacaoEnum.Concluido.Descricao();
 
                 if (!String.IsNullOrEmpty(validar.Ocorrencia))
                 {
                     response.Situacao   = SituacaoEnum.ConcluidoComAlerta.Descricao(); 
                     response.Ocorrencia = validar.Ocorrencia;
-                }
-                else
-                {
-                    response.Situacao   = SituacaoEnum.Concluido.Descricao();
                 }
             }
             catch (System.Exception e)
@@ -57,6 +54,18 @@ namespace Business.Tiss
             var versaoSuportada = Tiss.Versao.ValidarFactory.VersaoSuportada();
 
             return versaoSuportada;
+        }
+
+        private string RecuperaVersao(Stream stream)
+        {
+            var versao = String.Empty;
+
+            versao = XmlUtils.RecuperarValorXmlNo(stream, "Padrao");
+
+            if (versao == String.Empty)
+                versao = XmlUtils.RecuperarValorXmlNo(stream, "versaoPadrao");
+
+            return versao;
         }
     }
 }

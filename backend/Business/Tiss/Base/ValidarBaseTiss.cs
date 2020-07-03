@@ -3,20 +3,30 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Business.Utils;
+using Mapeamento.Tiss.V3_05_00;
 
 namespace Business.Tiss.Base
 {
     public class ValidarBaseTiss<T> : ValidarBase where T : class
     {
-        protected T mensagem { get; set; }
-
-        public bool ValidarHash(Stream stream)
+        private string RecuperaVersao(Stream stream)
         {
-            return XmlUtils.ValidarHash(stream);
+            var versao = String.Empty;
+
+            versao = XmlUtils.RecuperarValorXmlNo(stream, "Padrao");
+
+            if (versao == String.Empty)
+                versao = XmlUtils.RecuperarValorXmlNo(stream, "versaoPadrao");
+
+            return versao;
         }
-
-        public void ValidarSchema(Stream stream, string versao)
+        private bool ValidarHash(Stream stream, ref String oldHash, ref String newHash)
         {
+            return Hash.ValidarHash(stream, ref oldHash, ref newHash);
+        }
+        private void ValidarSchema(Stream stream, string versao)
+        {
+            stream.Position = 0;
             var assembly = Assembly.GetAssembly(typeof(T));
 
             var arquivosXsd = new List<Stream>();
@@ -38,23 +48,20 @@ namespace Business.Tiss.Base
                 throw new Exception(String.Format("Erros na estrutura do arquivo XML, os seguintes erros foram encontrados: {0}.", erros));
             }
         }
-
         public override void ValidarXML(Stream stream, string versao)
         {
             try
             {
                 this.ValidarSchema(stream, versao);
 
-                this.mensagem = (T)XmlUtils.ConverterXmlParaClasse(stream, typeof(T));
+                this.Transacao = XmlUtils.RecuperarValorXmlNo(stream, "TipoTransacao"); 
 
-                if (!ValidarHash(stream))
+                String newHash = String.Empty;
+                String oldHash = String.Empty;
+
+                if (!ValidarHash(stream, ref oldHash, ref newHash))
                 {
-                    this.Xml = XmlUtils.SerializarClasseParaXmlUtf8<T>((this.mensagem));
-
-                    if (String.IsNullOrEmpty(this.Xml))
-                        throw new Exception("Erro ao gerar arquivo de retorno.");
-
-                    this.NovoHash = XmlUtils.CalcularHash(this.Xml);
+                    this.Xml = XmlUtils.SetValorXmlNo(stream, oldHash, newHash);
                     this.Ocorrencia = "Arquivo Xml com Hash inválido.";
                 }
             }
@@ -63,5 +70,7 @@ namespace Business.Tiss.Base
                 throw new Exception(e.Message);
             }
         }
+
+        
     }
 }

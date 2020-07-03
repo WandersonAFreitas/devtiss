@@ -13,9 +13,7 @@ namespace Business.Tiss.Base
         public String Transacao { get; set; }
         public String versao { get; set; }
         public String Xml { get; set; }
-        public String NovoHash { get; set; }
         public String Ocorrencia { get; set; }
-
         public abstract void ValidarXML(Stream stream, String versao);
     }
 }
