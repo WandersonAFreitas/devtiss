@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Http;
 
-namespace Mapeamento.Dto.ValidarXML
+namespace Mapeamento.DataContracts.ValidarXML
 {
     public class ValidarXMLRequest
     {

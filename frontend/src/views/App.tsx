@@ -5,11 +5,15 @@ import { formatDistance } from "date-fns";
 import pt from "date-fns/locale/pt";
 import api from "../server/api";
 
+import { MdWarning } from "react-icons/md";
 import { ReactComponent as Logo } from '../assets/logo.svg';
+import Modal from './modal/Modal';
 
 function App() {
   const [itemFiles, setItemFiles] = useState<Array<any>>([]);
   const [versao, setVersao] = useState('Não identificada');
+  const [ocorrencia, setOcorrencia] = useState('');
+
 
   const handleUpload = (files: any[]) => {
 
@@ -38,12 +42,20 @@ function App() {
 
     files.forEach(file => {
       const link = document.createElement('a');
+
       link.href = file.url;
       link.setAttribute('download', file.nome);
+
       document.body.appendChild(link);
+
       link.click();
       link.parentNode?.removeChild(link);
     });
+  }
+
+  const handleCloseOcorrenica = () => {
+    console.log('entro');
+    setOcorrencia('');
   }
 
   useEffect(() => {
@@ -95,20 +107,22 @@ function App() {
               {
                 itemFiles && itemFiles.map((file, i) => (
                   <li key={i}>
-                    <a className="fileInfo" href={file.url} download={file.nome} target="_blank" rel="noopener noreferrer">
+                    <a href={file.url} download={file.nome} target="_blank" rel="noopener noreferrer">
+                      {/* <MdWarning size={12} color="#AF5F"/> */}
                       <span>{file.nome}</span>
                     </a>
                     <span>{file.transacao}</span>
                     <span>{file.versao}</span>
-                    <div className="tooltip">{file.situacao}
-                      <span className="tooltiptext">{file.ocorrencia}</span>
-                    </div>
+                    {file.ocorrencia ? <a href="#" onClick={() => setOcorrencia(file.ocorrencia)}>
+                      <span>{file.situacao}</span>
+                    </a> : <a onClick={() => setOcorrencia(file.ocorrencia)}>
+                        <span>{file.situacao}</span>
+                      </a>}
                     <span>há{" "}{formatDistance(Date.parse(file.data), new Date(), { locale: pt })}</span>
                   </li>
                 ))
               }
             </ul>
-
             <button type="button" onClick={() => handleDownloads(itemFiles)}>Downloads todos</button>
           </div>
         </main>
@@ -117,6 +131,9 @@ function App() {
           <p>Copyright © {new Date().getFullYear()} <a target='_blank' rel="noopener noreferrer" href="https://github.com/WandersonAFreitas">Freitas</a></p>
         </footer>
       </div>
+
+      {ocorrencia ? <Modal title={ocorrencia} closed={handleCloseOcorrenica} /> : null}
+
     </>
   );
 }

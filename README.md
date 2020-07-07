@@ -30,6 +30,10 @@ $ git commit -am "make it better"
 $ git push heroku master
 
     backend
+    
+docker build -t devtiss-backend .
+local: docker run -d -p 80:80 devtiss/devtiss-backend
+
 $ heroku login
 
 $ docker ps

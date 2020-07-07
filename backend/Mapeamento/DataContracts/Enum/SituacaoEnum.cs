@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Http;
 
-namespace Mapeamento.Dto.Enum
+namespace Mapeamento.DataContracts.Enum
 {
     public enum SituacaoEnum
     {

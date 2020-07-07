@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Mapeamento.Dto.ValidarXML
+namespace Mapeamento.DataContracts.ValidarXML
 {
     public class ValidarXMLResponse
     {

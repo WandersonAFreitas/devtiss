@@ -1,5 +1,5 @@
 using System;
-using Mapeamento.Dto.ValidarXML;
+using Mapeamento.DataContracts.ValidarXML;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

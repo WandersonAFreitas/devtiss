@@ -1,8 +1,8 @@
 using System;
 using System.IO;
 using Business.Utils;
-using Mapeamento.Dto.Enum;
-using Mapeamento.Dto.ValidarXML;
+using Mapeamento.DataContracts.Enum;
+using Mapeamento.DataContracts.ValidarXML;
 using Mapeamento.Extensions;
 
 namespace Business.Tiss
@@ -24,7 +24,7 @@ namespace Business.Tiss
                 var versao = RecuperaVersao(request.XML.OpenReadStream());
 
                 if (String.IsNullOrEmpty(versao))
-                    throw new Exception("Não foi possível identificar a versão TISS do arquivo ou o mesmo não está nas versões aceitas pela operadora.");
+                    throw new Exception("Não foi possível identificar a versão TISS do arquivo ou o mesmo não está nas versões aceitas.");
 
                 var validar = Tiss.Versao.ValidarFactory.Validar(versao);
                 validar.ValidarXML(request.XML.OpenReadStream(), versao);

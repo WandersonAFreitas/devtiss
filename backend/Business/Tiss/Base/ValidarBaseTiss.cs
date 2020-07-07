@@ -55,6 +55,7 @@ namespace Business.Tiss.Base
                 this.ValidarSchema(stream, versao);
 
                 this.Transacao = XmlUtils.RecuperarValorXmlNo(stream, "TipoTransacao"); 
+                this.versao = RecuperaVersao(stream); 
 
                 String newHash = String.Empty;
                 String oldHash = String.Empty;
@@ -63,6 +64,12 @@ namespace Business.Tiss.Base
                 {
                     this.Xml = XmlUtils.SetValorXmlNo(stream, oldHash, newHash);
                     this.Ocorrencia = "Arquivo Xml com Hash inválido.";
+                }
+                else
+                {
+                    stream.Position = 0;
+                    StreamReader reader = new StreamReader( stream );
+                    this.Xml = reader.ReadToEnd();
                 }
             }
             catch (System.Exception e)
