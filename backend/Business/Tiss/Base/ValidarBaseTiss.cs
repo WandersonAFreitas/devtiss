@@ -63,7 +63,9 @@ namespace Business.Tiss.Base
                 if (!ValidarHash(stream, ref oldHash, ref newHash))
                 {
                     this.Xml = XmlUtils.SetValorXmlNo(stream, oldHash, newHash);
-                    this.Ocorrencia = "Arquivo Xml com Hash inválido.";
+                    this.Ocorrencia = string.Format("Arquivo Xml com Hash inválido:" + Environment.NewLine + 
+                                                    "Antigo: {0}" + Environment.NewLine + 
+                                                    "Novo: {1}.", oldHash, newHash);
                 }
                 else
                 {

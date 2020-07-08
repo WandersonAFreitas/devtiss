@@ -112,7 +112,7 @@ function App() {
                     <span>{file.versao}</span>
                     {file.ocorrencia ? <a href="/#" onClick={() => setOcorrencia(file.ocorrencia)}>
                       <span>{file.situacao}</span>
-                    </a> : <span>{file.situacao}</span> }
+                    </a> : <span>{file.situacao}</span>}
                     <span>há{" "}{formatDistance(Date.parse(file.data), new Date(), { locale: pt })}</span>
                   </li>
                 ))
