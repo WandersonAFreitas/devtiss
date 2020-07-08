@@ -15,7 +15,8 @@ const Modal: React.FC<cTitle> = ({ title, closed }: cTitle) => {
                 <div className="content">
                     <div className="header">
                         <h1>Aviso</h1>
-                        <a href="#" onClick={closed}>Fechar</a>
+                        {/* <a href="#" onClick={() => handleClosed}>Fechar</a> */}
+                        <a href="/#" onClick={() => closed()}>Fechar</a>
                     </div>
                     <form action="">
                         <span>{title}</span>

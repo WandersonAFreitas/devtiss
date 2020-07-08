@@ -4,10 +4,9 @@ import Dropzone from 'react-dropzone';
 import { formatDistance } from "date-fns";
 import pt from "date-fns/locale/pt";
 import api from "../server/api";
-
-import { MdWarning } from "react-icons/md";
-import { ReactComponent as Logo } from '../assets/logo.svg';
 import Modal from './modal/Modal';
+
+import { ReactComponent as Logo } from '../assets/logo.svg';
 
 function App() {
   const [itemFiles, setItemFiles] = useState<Array<any>>([]);
@@ -54,7 +53,6 @@ function App() {
   }
 
   const handleCloseOcorrenica = () => {
-    console.log('entro');
     setOcorrencia('');
   }
 
@@ -108,16 +106,13 @@ function App() {
                 itemFiles && itemFiles.map((file, i) => (
                   <li key={i}>
                     <a href={file.url} download={file.nome} target="_blank" rel="noopener noreferrer">
-                      {/* <MdWarning size={12} color="#AF5F"/> */}
                       <span>{file.nome}</span>
                     </a>
                     <span>{file.transacao}</span>
                     <span>{file.versao}</span>
-                    {file.ocorrencia ? <a href="#" onClick={() => setOcorrencia(file.ocorrencia)}>
+                    {file.ocorrencia ? <a href="/#" onClick={() => setOcorrencia(file.ocorrencia)}>
                       <span>{file.situacao}</span>
-                    </a> : <a onClick={() => setOcorrencia(file.ocorrencia)}>
-                        <span>{file.situacao}</span>
-                      </a>}
+                    </a> : <span>{file.situacao}</span> }
                     <span>há{" "}{formatDistance(Date.parse(file.data), new Date(), { locale: pt })}</span>
                   </li>
                 ))
@@ -133,7 +128,6 @@ function App() {
       </div>
 
       {ocorrencia ? <Modal title={ocorrencia} closed={handleCloseOcorrenica} /> : null}
-
     </>
   );
 }

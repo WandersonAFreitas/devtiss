@@ -18,28 +18,30 @@
 
 
 heroku 
-    frontned
-$ heroku login
 
-$ cd frontend/
-$ git init
-$ heroku git:remote -a devtiss-backend
+frontned
 
-$ git add .
-$ git commit -am "make it better"
-$ git push heroku master
+    $ heroku login
 
-    backend
+    $ cd frontend/
+    $ git init
+    $ heroku git:remote -a devtiss-backend
+
+    $ git add .
+    $ git commit -am "make it better"
+    $ git push heroku master
+
+backend
     
-docker build -t devtiss-backend .
-local: docker run -d -p 80:80 devtiss/devtiss-backend
+    docker build -t devtiss-backend .
+    local: docker run -d -p 80:80 devtiss/devtiss-backend
 
-$ heroku login
+    $ heroku login
 
-$ docker ps
+    $ docker ps
 
-$ heroku container:login
+    $ heroku container:login
 
-$ heroku container:push web -a devtiss-backend
+    $ heroku container:push web -a devtiss-backend
 
-$ heroku container:release web -a devtiss-backend
+    $ heroku container:release web -a devtiss-backend
