@@ -1,51 +1,3 @@
-<h1>Dev Tiss</h1>
-<p>Esse projeto permitirá que todos os Devs tenha o conhecimento do desenvolvimento do padrão Tiss.</p>
-
-<h4>Tecnlogias utilizadas</h4>
-<ul>
-    <li>React</li>
-    <li>React-Native</li>
-    <li>Node.js</li>
-    <li>C#</li>
-</ul>
-
-<h4>Estapas do Projeto</h4>
-<ul>
-    <li>Configuração da estrutura do Projeto</li>
-    <li>Desenvolvimento do FrontEnd</li>
-    <li>Desenvolvimento do BackEnd</li>
-</ul>
-
-
-heroku 
-
-frontned
-
-    $ heroku login
-
-    $ cd frontend/
-    $ git init
-    $ cd ba
-
-    $ git add .
-    $ git commit -am "make it better"
-    $ git push heroku master
-
-backend
-    
-    docker build -t devtiss-backend .
-    local: docker run -d -p 80:80 devtiss/devtiss-backend
-
-    $ heroku login
-
-    $ docker ps
-
-    $ heroku container:login
-
-    $ heroku container:push web -a devtiss-backend
-
-    $ heroku container:release web -a devtiss-backend
-
 <h1>DevTiss<h1>
 
 <h2>O que seria esse projeto?</h2>
@@ -89,6 +41,36 @@ O projeto desenvolvido nessa semana, foi um marketplace para coleta de resíduos
   <li>Execute o comando “yarn install” para instalar as dependências</li>
   <li>Execute o comando “yarn start” para iniciar a aplicação.</li>
 </ul>
+
+heroku 
+
+frontned
+
+    $ heroku login
+
+    $ cd frontend/
+    $ git init
+    $ cd ba
+
+    $ git add .
+    $ git commit -am "make it better"
+    $ git push heroku master
+
+backend
+    
+    docker build -t devtiss-backend .
+    local: docker run -d -p 80:80 devtiss/devtiss-backend
+
+    $ heroku login
+
+    $ docker ps
+
+    $ heroku container:login
+
+    $ heroku container:push web -a devtiss-backend
+
+    $ heroku container:release web -a devtiss-backend
+
 
 <h2>Apresentação</h2>
 <img src="https://user-images.githubusercontent.com/14041111/83968224-088d5280-a89e-11ea-860e-7e95770985c4.gif">
