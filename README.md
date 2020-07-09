@@ -54,7 +54,7 @@
       * heroku container:push web -a devtiss-backend
       * heroku container:release web -a devtiss-backend
       
-   * FrontEnd
+  * FrontEnd
     * Selecione a pasta FrontEnd
     * Execute os comandos abaixo
       * git add .
