@@ -62,4 +62,4 @@
       * git push heroku master
  
 ## Apresentação
- <img src="https://user-images.githubusercontent.com/14041111/83968224-088d5280-a89e-11ea-860e-7e95770985c4.gif">
+ <img src="https://user-images.githubusercontent.com/14041111/86984100-04d24180-c164-11ea-8a87-efa4e696bdd6.gif">
